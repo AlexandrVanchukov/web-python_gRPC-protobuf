@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package glossary;
+
+service GlossaryService {
+    rpc GetTerms (GetTermsRequest) returns (GetTermsResponse);
+    rpc GetTerm (GetTermRequest) returns (Term);
+    rpc AddTerm (AddTermRequest) returns (Term);
+    rpc UpdateTerm (UpdateTermRequest) returns (Term);
+    rpc DeleteTerm (DeleteTermRequest) returns (google.protobuf.Empty);
+}
+
+message Term {
+    string keyword = 1;
+    string description = 2;
+}
+
+message GetTermsRequest {}
+
+message GetTermsResponse {
+    repeated Term terms = 1;
+}
+
+message GetTermRequest {
+    string keyword = 1;
+}
+
+message AddTermRequest {
+    string keyword = 1;
+    string description = 2;
+}
+
+message UpdateTermRequest {
+    string keyword = 1;
+    string description = 2;
+}
+
+message DeleteTermRequest {
+    string keyword = 1;
+}

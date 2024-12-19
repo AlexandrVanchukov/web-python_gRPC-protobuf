@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  grpc-server:
+    build: .
+    ports:
+      - "50051:50051"
+    volumes:
+      - .:/app
+    command: python server.py
